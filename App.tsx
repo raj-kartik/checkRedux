@@ -1,11 +1,26 @@
-import { View, Text } from 'react-native'
+
 import React from 'react'
 import TextValue from './TextValue'
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import IdDetails from './src/IdDetails';
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={{flex:1, backgroundColor:"#fff"}} >
-      <TextValue/>
-    </View>
-  )
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="User Info"
+          options={{headerShown: false}}
+          component={TextValue}
+        />
+        <Stack.Screen
+          name="IdDetails"
+          options={{headerStyle: {backgroundColor: '#d98d8d'}}}
+          component={IdDetails}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
